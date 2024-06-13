@@ -25,6 +25,11 @@ const AppointmentInformation = ({ appointment, onUpdateClick, onCancelClick }) =
                     <Col md={6} className="mb-3">
                         <Card.Text><strong>Reason:</strong> {reason}</Card.Text>
                     </Col>
+                    <hr/>
+                    <div className="d-flex justify-content-end gap-2 mt-3">
+                        <Button variant="outline-primary" onClick={() => onUpdateClick(appointment)}>Reschedule</Button>
+                        <Button variant="outline-danger" onClick={() => onCancelClick(appointment.id)}>Cancel</Button>
+                    </div>
                 </Row>
             </Card.Body>
         </Card>
