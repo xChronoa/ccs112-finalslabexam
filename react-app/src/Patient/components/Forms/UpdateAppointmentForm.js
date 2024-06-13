@@ -31,7 +31,7 @@ const UpdateAppointmentForm = ({ appointment, updateAppointment, onClose }) => {
             <div className="mb-3">
                 <label htmlFor="appointment_date" className="form-label">Appointment Date:</label>
                 <input
-                    type="date"
+                    type="datetime-local"
                     id="appointment_date"
                     name="appointment_date"
                     value={formData.appointment_date}
