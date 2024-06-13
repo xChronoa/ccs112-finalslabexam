@@ -11,3 +11,46 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Following code are custom CSS */
+
+/* CSS animation for underline of the navigation links in nav */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -.2rem;
+  width: 100%;
+  height: 3px;
+  width: 100%;
+  background: white;
+  scale: 0 1;
+  transition: scale .25s;
+}
+
+/* Will show the underline of the navigation link on hover */
+.nav-link:hover::after {
+  scale: 1 1;
+}
+
+/* Display underline on active navigation */
+.active::after {
+  scale: 1 1;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-content {
+  font-size: 1.5rem;
+  color: white; /* Change the color of the loading text */
+}
