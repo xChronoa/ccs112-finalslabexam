@@ -63,7 +63,7 @@ const AddRecordForm = (props) => {
                     <option value="" disabled>Select Patient ID</option>
                     {patients.map((patient) => (
                         <option key={patient.id} value={patient.id}>
-                            {patient.id} - {patient.first_name} {patient.last_name}
+                          {patient.first_name} {patient.last_name}
                         </option>
                     ))}
                 </select>

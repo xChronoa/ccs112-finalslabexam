@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { usePatient } from '../../../hooks/usePatient';
 
-const UpdatePatientForm = ({ record, update, onClose }) => {
+const UpdateRecordForm = ({ record, update, onClose }) => {
     const { id, patient_id, visit_date, diagnosis, treatment, notes } = record;
     const { patients } = usePatient();
 
     const [formData, setFormData] = useState({ id, patient_id, visit_date, diagnosis, treatment, notes });
-
     const [formError, setFormError] = useState(null);
 
     const handleChange = (e) => {
@@ -16,11 +15,14 @@ const UpdatePatientForm = ({ record, update, onClose }) => {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission
+        e.preventDefault();
 
         try {
-            if (await update(id, formData)) {
-                onClose(); // Close the form upon successful update
+            const isUpdated = await update(id, formData);
+            if (isUpdated) {
+                onClose();
+            } else {
+                setFormError('Failed to update record.');
             }
         } catch (error) {
             setFormError(error.message || 'An error occurred while updating the record.');
@@ -43,7 +45,7 @@ const UpdatePatientForm = ({ record, update, onClose }) => {
                     <option value="" disabled>Select Patient ID</option>
                     {patients.map((patient) => (
                         <option key={patient.id} value={patient.id}>
-                            {patient.id} - {patient.first_name} {patient.last_name}
+                            {patient.first_name} {patient.last_name}
                         </option>
                     ))}
                 </select>
@@ -101,4 +103,4 @@ const UpdatePatientForm = ({ record, update, onClose }) => {
     );
 };
 
-export default UpdatePatientForm;
+export default UpdateRecordForm;
