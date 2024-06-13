@@ -64,7 +64,7 @@ export function useRecord() {
             if (response.status === 409) {
                 const data = await response.json();
                 notify(`Error: ${data.message}`, "error");
-                return;
+                return false;
             }
 
             if (!response.ok) {
@@ -73,6 +73,7 @@ export function useRecord() {
 
             fetchRecord();
             notify("Successfully created the record.", "success");
+            return true;
         } catch (error) {
             console.error("Error creating record:", error);
             notify("Error creating record.", "error");
@@ -93,7 +94,7 @@ export function useRecord() {
             if (response.status === 409) {
                 const data = await response.json();
                 notify(`Error: ${data.message}`, "error");
-                return;
+                return false;
             }
 
             if (!response.ok) {
@@ -102,6 +103,7 @@ export function useRecord() {
 
             fetchRecord();
             notify("Successfully updated the record.", "success");
+            return true;
         } catch (error) {
             console.error("Error updating record:", error);
             notify("Error updating record.", "error");
