@@ -113,7 +113,7 @@ export function useAppointment() {
     const cancelAppointment = async (appointmentId) => {
         if (window.confirm("Are you sure you want to cancel this appointment?")) {
             try {
-                const response = await fetch(`http://127.0.0.1:8000/api/appointments/cancel/${appointmentId}/cancel`, {
+                const response = await fetch(`http://127.0.0.1:8000/api/appointments/cancel/${appointmentId}`, {
                     method: "DELETE",
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
